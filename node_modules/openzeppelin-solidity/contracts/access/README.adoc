@@ -1,9 +1,21 @@
 = Access
 
-Contract modules for authorization and access control mechanisms.
+NOTE: This page is incomplete. We're working to improve it for the next release. Stay tuned!
 
-== Contracts
+== Library
 
-{{Ownable}}
+{{Roles}}
 
-{{AccessControl}}
+== Roles
+
+{{CapperRole}}
+
+{{MinterRole}}
+
+{{PauserRole}}
+
+{{SignerRole}}
+
+{{WhitelistAdminRole}}
+
+{{WhitelistedRole}}

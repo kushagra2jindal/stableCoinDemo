@@ -1,13 +1,14 @@
 {
   "fileName": "PausableMock.sol",
   "contractName": "PausableMock",
-  "source": "pragma solidity ^0.6.0;\n\nimport \"../utils/Pausable.sol\";\n\ncontract PausableMock is Pausable {\n    bool public drasticMeasureTaken;\n    uint256 public count;\n\n    constructor () public {\n        drasticMeasureTaken = false;\n        count = 0;\n    }\n\n    function normalProcess() external whenNotPaused {\n        count++;\n    }\n\n    function drasticMeasure() external whenPaused {\n        drasticMeasureTaken = true;\n    }\n\n    function pause() external {\n        _pause();\n    }\n\n    function unpause() external {\n        _unpause();\n    }\n}\n",
+  "source": "pragma solidity ^0.5.0;\n\nimport \"../lifecycle/Pausable.sol\";\nimport \"./PauserRoleMock.sol\";\n\n// mock class using Pausable\ncontract PausableMock is Pausable, PauserRoleMock {\n    bool public drasticMeasureTaken;\n    uint256 public count;\n\n    constructor () public {\n        drasticMeasureTaken = false;\n        count = 0;\n    }\n\n    function normalProcess() external whenNotPaused {\n        count++;\n    }\n\n    function drasticMeasure() external whenPaused {\n        drasticMeasureTaken = true;\n    }\n}\n",
   "sourcePath": "contracts/mocks/PausableMock.sol",
-  "sourceMap": "58:482:55:-:0;;;162:85;5:9:-1;2:2;;;27:1;24;17:12;2:2;162:85:55;900:5:97;890:7;;:15;;;;;;;;;;;;;;;;;;216:5:55;194:19;;:27;;;;;;;;;;;;;;;;;;239:1;231:5;:9;;;;58:482;;;;;;",
-  "deployedSourceMap": "58:482:55:-:0;;;;5:9:-1;2:2;;;27:1;24;17:12;2:2;58:482:55;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;12:1:-1;9;2:12;135:20:55;;;:::i;:::-;;;;;;;;;;;;;;;;;;;483:55;;;:::i;:::-;;1007:76:97;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;98:31:55;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;426:51;;;:::i;:::-;;331:89;;;:::i;:::-;;253:72;;;:::i;:::-;;135:20;;;;:::o;483:55::-;521:10;:8;:10::i;:::-;483:55::o;1007:76:97:-;1046:4;1069:7;;;;;;;;;;;1062:14;;1007:76;:::o;98:31:55:-;;;;;;;;;;;;;:::o;426:51::-;462:8;:6;:8::i;:::-;426:51::o;331:89::-;1427:7:97;;;;;;;;;;;1419:40;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;409:4:55::1;387:19;;:26;;;;;;;;;;;;;;;;;;331:89::o:0;253:72::-;1236:7:97;;;;;;;;;;;1235:8;1227:37;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;311:5:55::1;;:7;;;;;;;;;;;;;253:72::o:0;1709:117:97:-;1427:7;;;;;;;;;;;1419:40;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1777:5:::1;1767:7:::0;::::1;:15;;;;;;;;;;;;;;;;;;1797:22;1806:12;:10;:12::i;:::-;1797:22;;;;;;;;;;;;;;;;;;;;;;1709:117::o:0;1535:115::-;1236:7;;;;;;;;;;;1235:8;1227:37;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1604:4:::1;1594:7;::::0;:14:::1;;;;;;;;;;;;;;;;;;1623:20;1630:12;:10;:12::i;:::-;1623:20;;;;;;;;;;;;;;;;;;;;;;1535:115::o:0;735:104:0:-;788:15;822:10;815:17;;735:104;:::o",
+  "sourceMap": "122:380:92:-;;;242:85;8:9:-1;5:2;;;30:1;27;20:12;5:2;242:85:92;318:24:9;329:12;:10;;;:12;;:::i;:::-;318:10;;;:24;;:::i;:::-;1023:5:43;1013:7;;:15;;;;;;;;;;;;;;;;;;296:5:92;274:19;;:27;;;;;;;;;;;;;;;;;;319:1;311:5;:9;;;;122:380;;788:96:0;833:15;867:10;860:17;;788:96;:::o;786:119:9:-;842:21;855:7;842:8;:12;;;;;;:21;;;;:::i;:::-;890:7;878:20;;;;;;;;;;;;786:119;:::o;260:175:6:-;337:18;341:4;347:7;337:3;;;:18;;:::i;:::-;336:19;328:63;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;424:4;401;:11;;:20;413:7;401:20;;;;;;;;;;;;;;;;:27;;;;;;;;;;;;;;;;;;260:175;;:::o;779:200::-;851:4;894:1;875:21;;:7;:21;;;;867:68;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;952:4;:11;;:20;964:7;952:20;;;;;;;;;;;;;;;;;;;;;;;;;945:27;;779:200;;;;:::o;122:380:92:-;;;;;;;",
+  "deployedSourceMap": "122:380:92:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;122:380:92;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;215:20;;;:::i;:::-;;;;;;;;;;;;;;;;;;;202:113:93;;;:::i;:::-;;1892:117:43;;;:::i;:::-;;494:107:9;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;494:107:9;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;1130:76:43;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;111:85:93;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;111:85:93;;;;;;;;;;;;;;;;;;;:::i;:::-;;703:77:9;;;:::i;:::-;;178:31:92;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;607:90:9;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;607:90:9;;;;;;;;;;;;;;;;;;;:::i;:::-;;1687:115:43;;;:::i;:::-;;411:89:92;;;:::i;:::-;;333:72;;;:::i;:::-;;215:20;;;;:::o;202:113:93:-;395:22:9;404:12;:10;:12::i;:::-;395:8;:22::i;:::-;387:83;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;202:113:93:o;1892:117:43:-;395:22:9;404:12;:10;:12::i;:::-;395:8;:22::i;:::-;387:83;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1550:7:43;;;;;;;;;;;1542:40;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1960:5;1950:7;;:15;;;;;;;;;;;;;;;;;;1980:22;1989:12;:10;:12::i;:::-;1980:22;;;;;;;;;;;;;;;;;;;;;;1892:117::o;494:107:9:-;550:4;573:21;586:7;573:8;:12;;:21;;;;:::i;:::-;566:28;;494:107;;;:::o;1130:76:43:-;1169:4;1192:7;;;;;;;;;;;1185:14;;1130:76;:::o;111:85:93:-;167:22;181:7;167:13;:22::i;:::-;111:85;:::o;703:77:9:-;746:27;760:12;:10;:12::i;:::-;746:13;:27::i;:::-;703:77::o;178:31:92:-;;;;;;;;;;;;;:::o;607:90:9:-;395:22;404:12;:10;:12::i;:::-;395:8;:22::i;:::-;387:83;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;671:19;682:7;671:10;:19::i;:::-;607:90;:::o;1687:115:43:-;395:22:9;404:12;:10;:12::i;:::-;395:8;:22::i;:::-;387:83;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1359:7:43;;;;;;;;;;;1358:8;1350:37;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1756:4;1746:7;;:14;;;;;;;;;;;;;;;;;;1775:20;1782:12;:10;:12::i;:::-;1775:20;;;;;;;;;;;;;;;;;;;;;;1687:115::o;411:89:92:-;1550:7:43;;;;;;;;;;;1542:40;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;489:4:92;467:19;;:26;;;;;;;;;;;;;;;;;;411:89::o;333:72::-;1359:7:43;;;;;;;;;;;1358:8;1350:37;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;391:5:92;;:7;;;;;;;;;;;;;333:72::o;788:96:0:-;833:15;867:10;860:17;;788:96;:::o;779:200:6:-;851:4;894:1;875:21;;:7;:21;;;;867:68;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;952:4;:11;;:20;964:7;952:20;;;;;;;;;;;;;;;;;;;;;;;;;945:27;;779:200;;;;:::o;394:94:93:-;453:28;473:7;453:19;:28::i;:::-;394:94;:::o;786:119:9:-;842:21;855:7;842:8;:12;;:21;;;;:::i;:::-;890:7;878:20;;;;;;;;;;;;786:119;:::o;911:127::-;970:24;986:7;970:8;:15;;:24;;;;:::i;:::-;1023:7;1009:22;;;;;;;;;;;;911:127;:::o;260:175:6:-;337:18;341:4;347:7;337:3;:18::i;:::-;336:19;328:63;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;424:4;401;:11;;:20;413:7;401:20;;;;;;;;;;;;;;;;:27;;;;;;;;;;;;;;;;;;260:175;;:::o;510:180::-;589:18;593:4;599:7;589:3;:18::i;:::-;581:64;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;678:5;655:4;:11;;:20;667:7;655:20;;;;;;;;;;;;;;;;:28;;;;;;;;;;;;;;;;;;510:180;;:::o",
   "abi": [
     {
       "inputs": [],
+      "payable": false,
       "stateMutability": "nonpayable",
       "type": "constructor"
     },
@@ -28,6 +29,32 @@
       "anonymous": false,
       "inputs": [
         {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "PauserAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "PauserRemoved",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
           "indexed": false,
           "internalType": "address",
           "name": "account",
@@ -38,6 +65,22 @@
       "type": "event"
     },
     {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "addPauser",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
       "inputs": [],
       "name": "count",
       "outputs": [
@@ -47,17 +90,21 @@
           "type": "uint256"
         }
       ],
+      "payable": false,
       "stateMutability": "view",
       "type": "function"
     },
     {
+      "constant": false,
       "inputs": [],
       "name": "drasticMeasure",
       "outputs": [],
+      "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
     },
     {
+      "constant": true,
       "inputs": [],
       "name": "drasticMeasureTaken",
       "outputs": [
@@ -67,24 +114,60 @@
           "type": "bool"
         }
       ],
+      "payable": false,
       "stateMutability": "view",
       "type": "function"
     },
     {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "isPauser",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
       "inputs": [],
       "name": "normalProcess",
       "outputs": [],
+      "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
     },
     {
+      "constant": true,
+      "inputs": [],
+      "name": "onlyPauserMock",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
       "inputs": [],
       "name": "pause",
       "outputs": [],
+      "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
     },
     {
+      "constant": true,
       "inputs": [],
       "name": "paused",
       "outputs": [
@@ -94,13 +177,40 @@
           "type": "bool"
         }
       ],
+      "payable": false,
       "stateMutability": "view",
       "type": "function"
     },
     {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "removePauser",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "renouncePauser",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
       "inputs": [],
       "name": "unpause",
       "outputs": [],
+      "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
     }
@@ -109,67 +219,99 @@
     "absolutePath": "contracts/mocks/PausableMock.sol",
     "exportedSymbols": {
       "PausableMock": [
-        5099
+        7467
       ]
     },
-    "id": 5100,
+    "id": 7468,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 5046,
+        "id": 7425,
         "literals": [
           "solidity",
           "^",
-          "0.6",
+          "0.5",
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:23:55"
+        "src": "0:23:92"
       },
       {
-        "absolutePath": "contracts/utils/Pausable.sol",
-        "file": "../utils/Pausable.sol",
-        "id": 5047,
+        "absolutePath": "contracts/lifecycle/Pausable.sol",
+        "file": "../lifecycle/Pausable.sol",
+        "id": 7426,
         "nodeType": "ImportDirective",
-        "scope": 5100,
-        "sourceUnit": 12043,
-        "src": "25:31:55",
+        "scope": 7468,
+        "sourceUnit": 5044,
+        "src": "25:35:92",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "abstract": false,
+        "absolutePath": "contracts/mocks/PauserRoleMock.sol",
+        "file": "./PauserRoleMock.sol",
+        "id": 7427,
+        "nodeType": "ImportDirective",
+        "scope": 7468,
+        "sourceUnit": 7502,
+        "src": "61:30:92",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
         "baseContracts": [
           {
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 5048,
+              "id": 7428,
               "name": "Pausable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 12042,
-              "src": "83:8:55",
+              "referencedDeclaration": 5043,
+              "src": "147:8:92",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Pausable_$12042",
+                "typeIdentifier": "t_contract$_Pausable_$5043",
                 "typeString": "contract Pausable"
               }
             },
-            "id": 5049,
+            "id": 7429,
             "nodeType": "InheritanceSpecifier",
-            "src": "83:8:55"
+            "src": "147:8:92"
+          },
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 7430,
+              "name": "PauserRoleMock",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 7501,
+              "src": "157:14:92",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_PauserRoleMock_$7501",
+                "typeString": "contract PauserRoleMock"
+              }
+            },
+            "id": 7431,
+            "nodeType": "InheritanceSpecifier",
+            "src": "157:14:92"
           }
         ],
         "contractDependencies": [
           26,
-          12042
+          1515,
+          5043,
+          7501
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 5099,
+        "id": 7467,
         "linearizedBaseContracts": [
-          5099,
-          12042,
+          7467,
+          7501,
+          5043,
+          1515,
           26
         ],
         "name": "PausableMock",
@@ -177,14 +319,11 @@
         "nodes": [
           {
             "constant": false,
-            "functionSelector": "76657b8e",
-            "id": 5051,
-            "mutability": "mutable",
+            "id": 7433,
             "name": "drasticMeasureTaken",
             "nodeType": "VariableDeclaration",
-            "overrides": null,
-            "scope": 5099,
-            "src": "98:31:55",
+            "scope": 7467,
+            "src": "178:31:92",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -192,10 +331,10 @@
               "typeString": "bool"
             },
             "typeName": {
-              "id": 5050,
+              "id": 7432,
               "name": "bool",
               "nodeType": "ElementaryTypeName",
-              "src": "98:4:55",
+              "src": "178:4:92",
               "typeDescriptions": {
                 "typeIdentifier": "t_bool",
                 "typeString": "bool"
@@ -206,14 +345,11 @@
           },
           {
             "constant": false,
-            "functionSelector": "06661abd",
-            "id": 5053,
-            "mutability": "mutable",
+            "id": 7435,
             "name": "count",
             "nodeType": "VariableDeclaration",
-            "overrides": null,
-            "scope": 5099,
-            "src": "135:20:55",
+            "scope": 7467,
+            "src": "215:20:92",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -221,10 +357,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 5052,
+              "id": 7434,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "135:7:55",
+              "src": "215:7:92",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -235,26 +371,26 @@
           },
           {
             "body": {
-              "id": 5064,
+              "id": 7446,
               "nodeType": "Block",
-              "src": "184:63:55",
+              "src": "264:63:92",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 5058,
+                    "id": 7440,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 5056,
+                      "id": 7438,
                       "name": "drasticMeasureTaken",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5051,
-                      "src": "194:19:55",
+                      "referencedDeclaration": 7433,
+                      "src": "274:19:92",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
                         "typeString": "bool"
@@ -265,14 +401,14 @@
                     "rightHandSide": {
                       "argumentTypes": null,
                       "hexValue": "66616c7365",
-                      "id": 5057,
+                      "id": 7439,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
                       "kind": "bool",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "216:5:55",
+                      "src": "296:5:92",
                       "subdenomination": null,
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -280,32 +416,32 @@
                       },
                       "value": "false"
                     },
-                    "src": "194:27:55",
+                    "src": "274:27:92",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "id": 5059,
+                  "id": 7441,
                   "nodeType": "ExpressionStatement",
-                  "src": "194:27:55"
+                  "src": "274:27:92"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 5062,
+                    "id": 7444,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 5060,
+                      "id": 7442,
                       "name": "count",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5053,
-                      "src": "231:5:55",
+                      "referencedDeclaration": 7435,
+                      "src": "311:5:92",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -316,14 +452,14 @@
                     "rightHandSide": {
                       "argumentTypes": null,
                       "hexValue": "30",
-                      "id": 5061,
+                      "id": 7443,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
                       "kind": "number",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "239:1:55",
+                      "src": "319:1:92",
                       "subdenomination": null,
                       "typeDescriptions": {
                         "typeIdentifier": "t_rational_0_by_1",
@@ -331,54 +467,53 @@
                       },
                       "value": "0"
                     },
-                    "src": "231:9:55",
+                    "src": "311:9:92",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "id": 5063,
+                  "id": 7445,
                   "nodeType": "ExpressionStatement",
-                  "src": "231:9:55"
+                  "src": "311:9:92"
                 }
               ]
             },
             "documentation": null,
-            "id": 5065,
+            "id": 7447,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [],
             "name": "",
             "nodeType": "FunctionDefinition",
-            "overrides": null,
             "parameters": {
-              "id": 5054,
+              "id": 7436,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "174:2:55"
+              "src": "254:2:92"
             },
             "returnParameters": {
-              "id": 5055,
+              "id": 7437,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "184:0:55"
+              "src": "264:0:92"
             },
-            "scope": 5099,
-            "src": "162:85:55",
+            "scope": 7467,
+            "src": "242:85:92",
             "stateMutability": "nonpayable",
-            "virtual": false,
+            "superFunction": null,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 5073,
+              "id": 7455,
               "nodeType": "Block",
-              "src": "301:24:55",
+              "src": "381:24:92",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 5071,
+                    "id": 7453,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -386,15 +521,15 @@
                     "nodeType": "UnaryOperation",
                     "operator": "++",
                     "prefix": false,
-                    "src": "311:7:55",
+                    "src": "391:7:92",
                     "subExpression": {
                       "argumentTypes": null,
-                      "id": 5070,
+                      "id": 7452,
                       "name": "count",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5053,
-                      "src": "311:5:55",
+                      "referencedDeclaration": 7435,
+                      "src": "391:5:92",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -405,81 +540,79 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 5072,
+                  "id": 7454,
                   "nodeType": "ExpressionStatement",
-                  "src": "311:7:55"
+                  "src": "391:7:92"
                 }
               ]
             },
             "documentation": null,
-            "functionSelector": "e7651d7a",
-            "id": 5074,
+            "id": 7456,
             "implemented": true,
             "kind": "function",
             "modifiers": [
               {
                 "arguments": null,
-                "id": 5068,
+                "id": 7450,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 5067,
+                  "id": 7449,
                   "name": "whenNotPaused",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 11999,
-                  "src": "287:13:55",
+                  "referencedDeclaration": 4999,
+                  "src": "367:13:92",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
                     "typeString": "modifier ()"
                   }
                 },
                 "nodeType": "ModifierInvocation",
-                "src": "287:13:55"
+                "src": "367:13:92"
               }
             ],
             "name": "normalProcess",
             "nodeType": "FunctionDefinition",
-            "overrides": null,
             "parameters": {
-              "id": 5066,
+              "id": 7448,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "275:2:55"
+              "src": "355:2:92"
             },
             "returnParameters": {
-              "id": 5069,
+              "id": 7451,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "301:0:55"
+              "src": "381:0:92"
             },
-            "scope": 5099,
-            "src": "253:72:55",
+            "scope": 7467,
+            "src": "333:72:92",
             "stateMutability": "nonpayable",
-            "virtual": false,
+            "superFunction": null,
             "visibility": "external"
           },
           {
             "body": {
-              "id": 5083,
+              "id": 7465,
               "nodeType": "Block",
-              "src": "377:43:55",
+              "src": "457:43:92",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 5081,
+                    "id": 7463,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 5079,
+                      "id": 7461,
                       "name": "drasticMeasureTaken",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5051,
-                      "src": "387:19:55",
+                      "referencedDeclaration": 7433,
+                      "src": "467:19:92",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
                         "typeString": "bool"
@@ -490,14 +623,14 @@
                     "rightHandSide": {
                       "argumentTypes": null,
                       "hexValue": "74727565",
-                      "id": 5080,
+                      "id": 7462,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
                       "kind": "bool",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "409:4:55",
+                      "src": "489:4:92",
                       "subdenomination": null,
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -505,219 +638,75 @@
                       },
                       "value": "true"
                     },
-                    "src": "387:26:55",
+                    "src": "467:26:92",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "id": 5082,
+                  "id": 7464,
                   "nodeType": "ExpressionStatement",
-                  "src": "387:26:55"
+                  "src": "467:26:92"
                 }
               ]
             },
             "documentation": null,
-            "functionSelector": "9958f045",
-            "id": 5084,
+            "id": 7466,
             "implemented": true,
             "kind": "function",
             "modifiers": [
               {
                 "arguments": null,
-                "id": 5077,
+                "id": 7459,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 5076,
+                  "id": 7458,
                   "name": "whenPaused",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 12009,
-                  "src": "366:10:55",
+                  "referencedDeclaration": 5008,
+                  "src": "446:10:92",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
                     "typeString": "modifier ()"
                   }
                 },
                 "nodeType": "ModifierInvocation",
-                "src": "366:10:55"
+                "src": "446:10:92"
               }
             ],
             "name": "drasticMeasure",
             "nodeType": "FunctionDefinition",
-            "overrides": null,
             "parameters": {
-              "id": 5075,
+              "id": 7457,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "354:2:55"
+              "src": "434:2:92"
             },
             "returnParameters": {
-              "id": 5078,
+              "id": 7460,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "377:0:55"
+              "src": "457:0:92"
             },
-            "scope": 5099,
-            "src": "331:89:55",
+            "scope": 7467,
+            "src": "411:89:92",
             "stateMutability": "nonpayable",
-            "virtual": false,
-            "visibility": "external"
-          },
-          {
-            "body": {
-              "id": 5090,
-              "nodeType": "Block",
-              "src": "452:25:55",
-              "statements": [
-                {
-                  "expression": {
-                    "argumentTypes": null,
-                    "arguments": [],
-                    "expression": {
-                      "argumentTypes": [],
-                      "id": 5087,
-                      "name": "_pause",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 12025,
-                      "src": "462:6:55",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_nonpayable$__$returns$__$",
-                        "typeString": "function ()"
-                      }
-                    },
-                    "id": 5088,
-                    "isConstant": false,
-                    "isLValue": false,
-                    "isPure": false,
-                    "kind": "functionCall",
-                    "lValueRequested": false,
-                    "names": [],
-                    "nodeType": "FunctionCall",
-                    "src": "462:8:55",
-                    "tryCall": false,
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_tuple$__$",
-                      "typeString": "tuple()"
-                    }
-                  },
-                  "id": 5089,
-                  "nodeType": "ExpressionStatement",
-                  "src": "462:8:55"
-                }
-              ]
-            },
-            "documentation": null,
-            "functionSelector": "8456cb59",
-            "id": 5091,
-            "implemented": true,
-            "kind": "function",
-            "modifiers": [],
-            "name": "pause",
-            "nodeType": "FunctionDefinition",
-            "overrides": null,
-            "parameters": {
-              "id": 5085,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "440:2:55"
-            },
-            "returnParameters": {
-              "id": 5086,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "452:0:55"
-            },
-            "scope": 5099,
-            "src": "426:51:55",
-            "stateMutability": "nonpayable",
-            "virtual": false,
-            "visibility": "external"
-          },
-          {
-            "body": {
-              "id": 5097,
-              "nodeType": "Block",
-              "src": "511:27:55",
-              "statements": [
-                {
-                  "expression": {
-                    "argumentTypes": null,
-                    "arguments": [],
-                    "expression": {
-                      "argumentTypes": [],
-                      "id": 5094,
-                      "name": "_unpause",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 12041,
-                      "src": "521:8:55",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_nonpayable$__$returns$__$",
-                        "typeString": "function ()"
-                      }
-                    },
-                    "id": 5095,
-                    "isConstant": false,
-                    "isLValue": false,
-                    "isPure": false,
-                    "kind": "functionCall",
-                    "lValueRequested": false,
-                    "names": [],
-                    "nodeType": "FunctionCall",
-                    "src": "521:10:55",
-                    "tryCall": false,
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_tuple$__$",
-                      "typeString": "tuple()"
-                    }
-                  },
-                  "id": 5096,
-                  "nodeType": "ExpressionStatement",
-                  "src": "521:10:55"
-                }
-              ]
-            },
-            "documentation": null,
-            "functionSelector": "3f4ba83a",
-            "id": 5098,
-            "implemented": true,
-            "kind": "function",
-            "modifiers": [],
-            "name": "unpause",
-            "nodeType": "FunctionDefinition",
-            "overrides": null,
-            "parameters": {
-              "id": 5092,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "499:2:55"
-            },
-            "returnParameters": {
-              "id": 5093,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "511:0:55"
-            },
-            "scope": 5099,
-            "src": "483:55:55",
-            "stateMutability": "nonpayable",
-            "virtual": false,
+            "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 5100,
-        "src": "58:482:55"
+        "scope": 7468,
+        "src": "122:380:92"
       }
     ],
-    "src": "0:541:55"
+    "src": "0:503:92"
   },
-  "bytecode": "0x608060405234801561001057600080fd5b5060008060006101000a81548160ff02191690831515021790555060008060016101000a81548160ff02191690831515021790555060006001819055506104d08061005c6000396000f3fe608060405234801561001057600080fd5b506004361061007d5760003560e01c806376657b8e1161005b57806376657b8e146100cc5780638456cb59146100ee5780639958f045146100f8578063e7651d7a146101025761007d565b806306661abd146100825780633f4ba83a146100a05780635c975abb146100aa575b600080fd5b61008a61010c565b6040518082815260200191505060405180910390f35b6100a8610112565b005b6100b261011c565b604051808215151515815260200191505060405180910390f35b6100d4610132565b604051808215151515815260200191505060405180910390f35b6100f6610145565b005b61010061014f565b005b61010a6101ed565b005b60015481565b61011a610283565b565b60008060009054906101000a900460ff16905090565b600060019054906101000a900460ff1681565b61014d61038a565b565b6000809054906101000a900460ff166101d0576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260148152602001807f5061757361626c653a206e6f742070617573656400000000000000000000000081525060200191505060405180910390fd5b6001600060016101000a81548160ff021916908315150217905550565b6000809054906101000a900460ff161561026f576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260108152602001807f5061757361626c653a207061757365640000000000000000000000000000000081525060200191505060405180910390fd5b600160008154809291906001019190505550565b6000809054906101000a900460ff16610304576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260148152602001807f5061757361626c653a206e6f742070617573656400000000000000000000000081525060200191505060405180910390fd5b60008060006101000a81548160ff0219169083151502179055507f5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa610347610492565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a1565b6000809054906101000a900460ff161561040c576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260108152602001807f5061757361626c653a207061757365640000000000000000000000000000000081525060200191505060405180910390fd5b60016000806101000a81548160ff0219169083151502179055507f62e78cea01bee320cd4e420270b5ea74000d11b0c9f74754ebdbfc544b05a25861044f610492565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a1565b60003390509056fea26469706673582212201898c4f39260966fc86762b718309883500302a4c7f84b67d0d38c04c8c53e2464736f6c63430006060033",
-  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061007d5760003560e01c806376657b8e1161005b57806376657b8e146100cc5780638456cb59146100ee5780639958f045146100f8578063e7651d7a146101025761007d565b806306661abd146100825780633f4ba83a146100a05780635c975abb146100aa575b600080fd5b61008a61010c565b6040518082815260200191505060405180910390f35b6100a8610112565b005b6100b261011c565b604051808215151515815260200191505060405180910390f35b6100d4610132565b604051808215151515815260200191505060405180910390f35b6100f6610145565b005b61010061014f565b005b61010a6101ed565b005b60015481565b61011a610283565b565b60008060009054906101000a900460ff16905090565b600060019054906101000a900460ff1681565b61014d61038a565b565b6000809054906101000a900460ff166101d0576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260148152602001807f5061757361626c653a206e6f742070617573656400000000000000000000000081525060200191505060405180910390fd5b6001600060016101000a81548160ff021916908315150217905550565b6000809054906101000a900460ff161561026f576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260108152602001807f5061757361626c653a207061757365640000000000000000000000000000000081525060200191505060405180910390fd5b600160008154809291906001019190505550565b6000809054906101000a900460ff16610304576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260148152602001807f5061757361626c653a206e6f742070617573656400000000000000000000000081525060200191505060405180910390fd5b60008060006101000a81548160ff0219169083151502179055507f5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa610347610492565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a1565b6000809054906101000a900460ff161561040c576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260108152602001807f5061757361626c653a207061757365640000000000000000000000000000000081525060200191505060405180910390fd5b60016000806101000a81548160ff0219169083151502179055507f62e78cea01bee320cd4e420270b5ea74000d11b0c9f74754ebdbfc544b05a25861044f610492565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a1565b60003390509056fea26469706673582212201898c4f39260966fc86762b718309883500302a4c7f84b67d0d38c04c8c53e2464736f6c63430006060033",
+  "bytecode": "0x608060405234801561001057600080fd5b5061002d61002261006f60201b60201c565b61007760201b60201c565b6000600160006101000a81548160ff02191690831515021790555060006001806101000a81548160ff0219169083151502179055506000600281905550610294565b600033905090565b61008f8160006100d560201b6109341790919060201c565b8073ffffffffffffffffffffffffffffffffffffffff167f6719d08c1888103bea251a4ed56406bd0c3e69723c8a1686e017e7bbe159b6f860405160405180910390a250565b6100e582826101b660201b60201c565b15610158576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252601f8152602001807f526f6c65733a206163636f756e7420616c72656164792068617320726f6c650081525060200191505060405180910390fd5b60018260000160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff0219169083151502179055505050565b60008073ffffffffffffffffffffffffffffffffffffffff168273ffffffffffffffffffffffffffffffffffffffff16141561023d576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526022815260200180610e176022913960400191505060405180910390fd5b8260000160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff16905092915050565b610b74806102a36000396000f3fe608060405234801561001057600080fd5b50600436106100b45760003560e01c80636ef8d66d116100715780636ef8d66d146101ad57806376657b8e146101b757806382dc1ec4146101d95780638456cb591461021d5780639958f04514610227578063e7651d7a14610231576100b4565b806306661abd146100b9578063329daf90146100d75780633f4ba83a146100e157806346fbf68e146100eb5780635c975abb146101475780636b2c0f5514610169575b600080fd5b6100c161023b565b6040518082815260200191505060405180910390f35b6100df610241565b005b6100e96102a8565b005b61012d6004803603602081101561010157600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610416565b604051808215151515815260200191505060405180910390f35b61014f610433565b604051808215151515815260200191505060405180910390f35b6101ab6004803603602081101561017f57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061044a565b005b6101b5610456565b005b6101bf610468565b604051808215151515815260200191505060405180910390f35b61021b600480360360208110156101ef57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061047a565b005b6102256104eb565b005b61022f610659565b005b6102396106f7565b005b60025481565b61025161024c61078e565b610416565b6102a6576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526030815260200180610acd6030913960400191505060405180910390fd5b565b6102b86102b361078e565b610416565b61030d576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526030815260200180610acd6030913960400191505060405180910390fd5b600160009054906101000a900460ff1661038f576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260148152602001807f5061757361626c653a206e6f742070617573656400000000000000000000000081525060200191505060405180910390fd5b6000600160006101000a81548160ff0219169083151502179055507f5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa6103d361078e565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a1565b600061042c82600061079690919063ffffffff16565b9050919050565b6000600160009054906101000a900460ff16905090565b61045381610874565b50565b61046661046161078e565b610874565b565b6001809054906101000a900460ff1681565b61048a61048561078e565b610416565b6104df576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526030815260200180610acd6030913960400191505060405180910390fd5b6104e881610880565b50565b6104fb6104f661078e565b610416565b610550576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526030815260200180610acd6030913960400191505060405180910390fd5b600160009054906101000a900460ff16156105d3576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260108152602001807f5061757361626c653a207061757365640000000000000000000000000000000081525060200191505060405180910390fd5b60018060006101000a81548160ff0219169083151502179055507f62e78cea01bee320cd4e420270b5ea74000d11b0c9f74754ebdbfc544b05a25861061661078e565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a1565b600160009054906101000a900460ff166106db576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260148152602001807f5061757361626c653a206e6f742070617573656400000000000000000000000081525060200191505060405180910390fd5b60018060016101000a81548160ff021916908315150217905550565b600160009054906101000a900460ff161561077a576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260108152602001807f5061757361626c653a207061757365640000000000000000000000000000000081525060200191505060405180910390fd5b600260008154809291906001019190505550565b600033905090565b60008073ffffffffffffffffffffffffffffffffffffffff168273ffffffffffffffffffffffffffffffffffffffff16141561081d576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526022815260200180610b1e6022913960400191505060405180910390fd5b8260000160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff16905092915050565b61087d816108da565b50565b61089481600061093490919063ffffffff16565b8073ffffffffffffffffffffffffffffffffffffffff167f6719d08c1888103bea251a4ed56406bd0c3e69723c8a1686e017e7bbe159b6f860405160405180910390a250565b6108ee816000610a0f90919063ffffffff16565b8073ffffffffffffffffffffffffffffffffffffffff167fcd265ebaf09df2871cc7bd4133404a235ba12eff2041bb89d9c714a2621c7c7e60405160405180910390a250565b61093e8282610796565b156109b1576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252601f8152602001807f526f6c65733a206163636f756e7420616c72656164792068617320726f6c650081525060200191505060405180910390fd5b60018260000160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff0219169083151502179055505050565b610a198282610796565b610a6e576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526021815260200180610afd6021913960400191505060405180910390fd5b60008260000160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff021916908315150217905550505056fe506175736572526f6c653a2063616c6c657220646f6573206e6f742068617665207468652050617573657220726f6c65526f6c65733a206163636f756e7420646f6573206e6f74206861766520726f6c65526f6c65733a206163636f756e7420697320746865207a65726f2061646472657373a265627a7a723158208908ef3d1871ddd8c721e3fdb783d39629d875357aadf34b1d7f65db034223a964736f6c63430005100032526f6c65733a206163636f756e7420697320746865207a65726f2061646472657373",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100b45760003560e01c80636ef8d66d116100715780636ef8d66d146101ad57806376657b8e146101b757806382dc1ec4146101d95780638456cb591461021d5780639958f04514610227578063e7651d7a14610231576100b4565b806306661abd146100b9578063329daf90146100d75780633f4ba83a146100e157806346fbf68e146100eb5780635c975abb146101475780636b2c0f5514610169575b600080fd5b6100c161023b565b6040518082815260200191505060405180910390f35b6100df610241565b005b6100e96102a8565b005b61012d6004803603602081101561010157600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610416565b604051808215151515815260200191505060405180910390f35b61014f610433565b604051808215151515815260200191505060405180910390f35b6101ab6004803603602081101561017f57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061044a565b005b6101b5610456565b005b6101bf610468565b604051808215151515815260200191505060405180910390f35b61021b600480360360208110156101ef57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061047a565b005b6102256104eb565b005b61022f610659565b005b6102396106f7565b005b60025481565b61025161024c61078e565b610416565b6102a6576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526030815260200180610acd6030913960400191505060405180910390fd5b565b6102b86102b361078e565b610416565b61030d576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526030815260200180610acd6030913960400191505060405180910390fd5b600160009054906101000a900460ff1661038f576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260148152602001807f5061757361626c653a206e6f742070617573656400000000000000000000000081525060200191505060405180910390fd5b6000600160006101000a81548160ff0219169083151502179055507f5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa6103d361078e565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a1565b600061042c82600061079690919063ffffffff16565b9050919050565b6000600160009054906101000a900460ff16905090565b61045381610874565b50565b61046661046161078e565b610874565b565b6001809054906101000a900460ff1681565b61048a61048561078e565b610416565b6104df576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526030815260200180610acd6030913960400191505060405180910390fd5b6104e881610880565b50565b6104fb6104f661078e565b610416565b610550576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526030815260200180610acd6030913960400191505060405180910390fd5b600160009054906101000a900460ff16156105d3576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260108152602001807f5061757361626c653a207061757365640000000000000000000000000000000081525060200191505060405180910390fd5b60018060006101000a81548160ff0219169083151502179055507f62e78cea01bee320cd4e420270b5ea74000d11b0c9f74754ebdbfc544b05a25861061661078e565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a1565b600160009054906101000a900460ff166106db576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260148152602001807f5061757361626c653a206e6f742070617573656400000000000000000000000081525060200191505060405180910390fd5b60018060016101000a81548160ff021916908315150217905550565b600160009054906101000a900460ff161561077a576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260108152602001807f5061757361626c653a207061757365640000000000000000000000000000000081525060200191505060405180910390fd5b600260008154809291906001019190505550565b600033905090565b60008073ffffffffffffffffffffffffffffffffffffffff168273ffffffffffffffffffffffffffffffffffffffff16141561081d576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526022815260200180610b1e6022913960400191505060405180910390fd5b8260000160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff16905092915050565b61087d816108da565b50565b61089481600061093490919063ffffffff16565b8073ffffffffffffffffffffffffffffffffffffffff167f6719d08c1888103bea251a4ed56406bd0c3e69723c8a1686e017e7bbe159b6f860405160405180910390a250565b6108ee816000610a0f90919063ffffffff16565b8073ffffffffffffffffffffffffffffffffffffffff167fcd265ebaf09df2871cc7bd4133404a235ba12eff2041bb89d9c714a2621c7c7e60405160405180910390a250565b61093e8282610796565b156109b1576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252601f8152602001807f526f6c65733a206163636f756e7420616c72656164792068617320726f6c650081525060200191505060405180910390fd5b60018260000160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff0219169083151502179055505050565b610a198282610796565b610a6e576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526021815260200180610afd6021913960400191505060405180910390fd5b60008260000160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff021916908315150217905550505056fe506175736572526f6c653a2063616c6c657220646f6573206e6f742068617665207468652050617573657220726f6c65526f6c65733a206163636f756e7420646f6573206e6f74206861766520726f6c65526f6c65733a206163636f756e7420697320746865207a65726f2061646472657373a265627a7a723158208908ef3d1871ddd8c721e3fdb783d39629d875357aadf34b1d7f65db034223a964736f6c63430005100032",
   "compiler": {
     "name": "solc",
-    "version": "0.6.6+commit.6c089d02.Emscripten.clang",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang",
     "optimizer": {
       "enabled": false,
       "runs": 200
