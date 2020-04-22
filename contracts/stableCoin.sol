@@ -5,7 +5,11 @@ import "/openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 contract stableCoin is ERC20{
   
     constructor() 
-      public {}
+      public {
+
+        _mint(msg.sender, 10);
+
+      }
 
 
 }
