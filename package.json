@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/kushagra2jindal/stableCoinDemo/issues"
   },
-  "homepage": "https://github.com/kushagra2jindal/stableCoinDemo#readme"
+  "homepage": "https://github.com/kushagra2jindal/stableCoinDemo#readme",
+  "dependencies": {
+    "openzeppelin-solidity": "^3.0.0"
+  }
 }
