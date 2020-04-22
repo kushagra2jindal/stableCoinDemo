@@ -1,0 +1,22 @@
+{
+  "name": "stablecoindemo",
+  "version": "1.0.0",
+  "description": "creating a stable coin",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kushagra2jindal/stableCoinDemo.git"
+  },
+  "author": "kushagra Jindal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kushagra2jindal/stableCoinDemo/issues"
+  },
+  "homepage": "https://github.com/kushagra2jindal/stableCoinDemo#readme"
+}
