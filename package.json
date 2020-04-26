@@ -20,6 +20,9 @@
   },
   "homepage": "https://github.com/kushagra2jindal/stableCoinDemo#readme",
   "dependencies": {
-    "openzeppelin-solidity": "^2.5.0"
+    "ejs": "^3.0.2",
+    "express": "^4.17.1",
+    "openzeppelin-solidity": "^2.5.0",
+    "web3": "^0.20.0"
   }
 }
